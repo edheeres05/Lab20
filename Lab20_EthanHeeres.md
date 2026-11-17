@@ -60,13 +60,7 @@ Settings: at least 6% estimated gross annual return, at least 5% BIL, nonnegativ
 
 ### Before the run — write personally, then commit and push
 
-- Input being changed: UNRESOLVED.
-- Old value and units: UNRESOLVED.
-- New value and units: UNRESOLVED.
-- Direction expected for the decision numbers: UNRESOLVED.
-- Expected effect on the decision: UNRESOLVED.
-- Prediction commit URL: UNRESOLVED.
-- Baseline settings and before-output link: UNRESOLVED.
+I will lower SOXX’s expected annual return from 33.89% to 25%. I expect less allocation to SOXX, lower portfolio return, and lower volatility. My decision will remain Pilot because I expect a more conservative allocation with less exposure to the highly volatile semiconductor sector.
 
 ### After the prediction commit — run and record
 
