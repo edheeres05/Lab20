@@ -1,77 +1,82 @@
-ChatGPT assisted with assembling the existing code, checking reproduction, and drafting the readiness record. Ethan must review the analysis and own the final decision.
+ChatGPT assisted with code development, packaging, verification and writing. Ethan supplied the prediction ideas, portfolio choice and partner report and is responsible for the analysis and decision.
 
 Education, not investment advice.
 
-# Lab 20 — Ethan Heeres
+# FIN 439 — Lab 20: Project 2 Readiness
+Ethan Heeres
 
-This is a runnable readiness package based on the existing [Lab 15 app](https://github.com/edheeres05/Lab15WebAPP). **The Lab 20 record is a draft with explicit unresolved items.** It is not a completed Project 2 submission.
+**Decision: Pilot for educational testing only.** The app reproduces the six-fund baseline, and the partner reported a clean cold run. The changed-input test remains feasible but increases risk, so it does not support adoption for real investment use. Reject the pilot if an input change makes the selected return/reserve screens infeasible or if the saved calculations cannot be reproduced.
 
-## Run on Windows
+- [Lab 20 write-up](Lab20_EthanHeeres.md)
+- [Before output](before.md)
+- [After output](after.md)
+- [Prediction committed before the changed-input run](https://github.com/edheeres05/Lab20/commit/a708628f404a89549e0dd33239ec06c834e876ec)
 
-Extract this ZIP. Open the extracted `Lab20_EthanHeeres` folder in VS Code, then open Terminal → New Terminal. The terminal must show the folder containing `app.py`.
+## Download and run
 
-Install once:
+On GitHub, select **Code → Download ZIP**, then extract it. Open the extracted folder in VS Code. Open the folder that directly contains `app.py` and `requirements.txt`; do not stop at an outer folder that contains only another folder.
+
+In VS Code, select **Terminal → New Terminal** and install the dependencies:
 
 ```powershell
 py -m pip install -r requirements.txt
 ```
 
-Reproduce the saved six-fund result with one command:
-
-```powershell
-py reproduce.py
-```
-
-Read [the visible result](outputs/baseline.md) without running anything. The command writes that file and `outputs/baseline.json`.
-
-Start the interactive app:
+Start the app:
 
 ```powershell
 py -m streamlit run app.py
 ```
 
-If your system uses `python`, replace `py` with `python`. Python 3.10+ is recommended. Keep the terminal open while using the app.
+If your installation uses `python`, replace `py` with `python`. Keep the terminal open. Open the Local URL printed by Streamlit if the browser does not open automatically.
 
-The app initially shows the Meridian training case. To reproduce the six-fund result:
+### Select the six-fund baseline after every restart
 
-1. Check **Use included six-fund prices.csv**.
+The app starts with the Meridian training example. For this lab:
+
+1. Check **Use included six-fund prices.csv**. No upload is necessary.
 2. Click **Use proposed project settings: 6% / 5%**.
-3. Leave **Use only the last 36 monthly returns** off.
-4. Keep only BIL reserve-eligible and leave the return estimates unchanged.
+3. Keep **Use only the last 36 monthly returns** off.
+4. Keep only **BIL** reserve-eligible.
+5. Leave the six return estimates unchanged.
 
-Expected allocation in VOO / QQQ / SOXX / SCHD / BIL / BND: **0 / 5 / 5 / 5 / 85 / 0%**. Expected gross annual return **6.08%**, volatility **3.33%**, reserve **85%**.
+The baseline is 0% VOO, 5% QQQ, 5% SOXX, 5% SCHD, 85% BIL and 0% BND: **6.08% estimated annual gross return and 3.33% volatility**.
 
-These are historical estimates before costs. Passing this exercise's screens does not establish compliance with the full Project 2 mandate.
+### Reproduce the saved baseline with one command
 
-## Lab 20 workflow
+After installing dependencies, run:
 
-- Use [Lab20_EthanHeeres.md](Lab20_EthanHeeres.md) for the individual checkout.
-- Have your partner follow this README from your existing GitHub repository in their own folder. They must supply their actual command, first failure, elapsed time and result location.
-- Close AI before writing your changed-input prediction in the lab record. Commit and push it to the existing repository **before** changing the input and running it.
-- Save the app's current Markdown comparison as your before output. After the prediction commit, change only the chosen input and save another comparison under a different filename.
-- Add the prediction commit URL, before/after output links, actual result, partner rerun and your own reflection.
-- Submit the GitHub links requested in Brightspace. This package has not been pushed or submitted.
+```powershell
+py reproduce.py
+```
 
-## Confirmed six-fund version
+This prints the baseline and saves [outputs/baseline.md](outputs/baseline.md) and [outputs/baseline.json](outputs/baseline.json). The output is readable on GitHub without running Python.
 
-On November 17, 2026, Ethan selected the six-fund version: VOO, QQQ, SOXX, SCHD, BIL and BND. All six funds are retained; ORCL is not added. This selection supersedes the universe in the earlier [Lab 13 proposal](https://github.com/edheeres05/FIN439project2/blob/main/Lab13_EthanHeeres.md). The selected app minimizes estimated volatility subject to a 6% gross-return screen and at least 5% BIL. The remaining Project 2 policy requirements still need to be reconciled and implemented; choosing the universe does not establish full mandate compliance.
+### Repeat the recorded changed-input test
 
-The complete Project 2 still requires a consistent mandate, two app baselines and their verdicts, point-in-time signal/data card, cost and other stress checks, decision memo, validation/AI-use record, videos/transcripts and manifest. See the readiness table in the lab record.
+Starting from the six-fund baseline, set **SOXX expected return (%)** to **25.00** and press Enter while the cursor is in that box. Leave everything else unchanged.
+
+The current-input mix becomes 5% VOO, 5% QQQ, 5% SOXX, 5% SCHD, 80% BIL and 0% BND: **6.10% estimated annual gross return and 4.04% volatility**. The reference mix on the right stays at the original result.
+
+The button **Download this comparison as Markdown** creates `Lab15_scenario_snapshot.md`. It is a new browser download, not an existing project file. The two recorded downloads are preserved here as `before.md` and `after.md`. Their original Lab 15 export headings are retained.
+
+## Scope
+
+The selected universe is VOO, QQQ, SOXX, SCHD, BIL and BND. No ORCL substitution is used. The engine minimizes estimated volatility on a 5-percentage-point grid with nonnegative weights summing to 100%, a 6% gross-return minimum and a 5% BIL minimum.
+
+The estimates use the saved monthly prices and are historical arithmetic estimates, not forecasts. Costs and taxes are excluded. Full Project 2 net-return, timing and policy compliance is not established by this lab. See the write-up for the readiness assessment and [DATA_SOURCES.md](DATA_SOURCES.md) for provenance.
 
 ## Files
 
 | File | Purpose |
 |---|---|
-| `Lab20_EthanHeeres.md` | Individual readiness draft; human evidence remains unresolved |
-| `app.py` | Existing interactive app |
-| `portfolio.py` | Existing calculation engine |
-| `prices.csv` | Existing saved monthly price snapshot |
-| `requirements.txt` | App dependencies |
-| `reproduce.py` | Reproduce the existing six-fund result |
-| `outputs/baseline.md` | Readable output for GitHub |
-| `outputs/baseline.json` | Unrounded reproduction output |
-| `DATA_SOURCES.md` | Existing data provenance and source file identifiers |
-
-## Verification of this package
-
-AI-assisted checks on November 17, 2026 reproduced the existing saved baseline within 1e-12 and exercised the app startup and six-fund preset using Streamlit AppTest. Checked with Python 3.12.14, Streamlit 1.67.0, pandas 2.2.3 and NumPy 2.3.5. These checks do not replace the partner cold run.
+| `Lab20_EthanHeeres.md` | Cold-run note, prediction commit, actual results and decision |
+| `before.md`, `after.md` | Student-downloaded before/after evidence |
+| `app.py` | Interactive Streamlit app |
+| `portfolio.py` | Calculation engine |
+| `prices.csv` | Saved monthly prices |
+| `requirements.txt` | Dependencies |
+| `reproduce.py` | Baseline reproduction command |
+| `outputs/baseline.md`, `outputs/baseline.json` | Readable and unrounded baseline |
+| `DATA_SOURCES.md` | Data sources and limitations |
+| `.gitignore` | Excludes generated Python caches from future Git commits |

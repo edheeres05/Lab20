@@ -1,111 +1,114 @@
-# Lab 20 — Project 2 Readiness
-Ethan Heeres | FIN 439 | November 17, 2026
-
-ChatGPT helped inspect the repositories, package the existing app, reproduce its baseline, and draft this record. Human-only activities are marked unresolved rather than claimed as completed.
 
 Education, not investment advice.
 
-**Status: readiness draft — six-fund version confirmed; partner evidence, AI-off prediction, remaining mandate requirements and personal reflection unresolved.**
+# Lab 20 — Project 2 Readiness
+Ethan Heeres | FIN 439 | Session 20
 
-## D — The question
+## D — Can a stranger reproduce the decision?
 
-Could a committee member who has never met me reach my decision from my repository, and does the decision survive one changed input?
+The six-fund app can be run from the repository instructions, and Gage Hodson reported reaching the same baseline without errors. The changed-input test still meets the app's return and reserve screens, but it increases estimated volatility instead of reducing it. The recommendation is a limited educational pilot, not adoption for real investment use.
 
-**Not yet established.** The inspected `FIN439project2` main branch contained `Lab13_EthanHeeres.md`, `mandate.py`, and a Lab 14 ZIP, with no root README or integrated web app. The runnable app was in the separate `Lab15WebAPP` repository. A reader could reproduce that exercise, but the final Project 2 mandate and decision were not demonstrated by the inspected Project 2 files alone.
+The selected universe is VOO, QQQ, SOXX, SCHD, BIL and BND. This replaces the earlier ORCL-focused universe for this lab. The objective implemented here is to minimize estimated volatility on a 5-percentage-point allocation grid, subject to nonnegative weights totaling 100%, at least 6% estimated annual gross return and at least 5% BIL.
 
-On November 17, 2026, I selected the six-fund version: VOO, QQQ, SOXX, SCHD, BIL and BND. All six funds are retained, with no ORCL substitution. This replaces the universe in my earlier ORCL-focused proposal. The selected app minimizes estimated volatility with a 6% gross-return screen and at least 5% BIL. The other risk and policy requirements still need to be reconciled and implemented before full Project 2 mandate compliance can be claimed.
+## I — Partner cold-run note
 
-## R — Readiness check
+**Partner:** Gage Hodson.
 
-| Part | Verified evidence | Remaining item |
-|---|---|---|
-| Tool | Existing interactive Lab 15 app and engine included | Six-fund version confirmed; reconcile remaining policy requirements and implement all final mandate verdicts |
-| Repository / README | This package provides installation, app-start and result-reproduction commands | Upload to the existing repository and obtain partner's independent cold run |
-| Visible output | `outputs/baseline.md` and JSON reproduce the existing six-fund result | Final Project 2 output must use the confirmed mandate |
-| Decision memo | No `docs/decision-memo.md` in the inspected Project 2 tree | Supply or create the final memo after mandate confirmation |
-| Validation and AI use | Existing baseline reproduced; limitations disclosed | Full baseline comparisons, point-in-time integration, stress checks and Locked Changed-Input Record |
-| Videos 1–3 and transcripts | No links found in the inspected Project 2 tree | Supply working video/transcript links and manifest |
-| Week 12 must-fix list | Not supplied or found in the inspected Project 2 tree | Ethan to provide the actual list |
-| Due date | Not checked in Brightspace | Read the Project 2 assignment header; do not substitute an assumed date |
+Gage downloaded the repository files, opened them in VS Code and ran the README's installation and app-start commands in the terminal:
 
-### Existing baseline reproduced with AI assistance
+```powershell
+py -m pip install -r requirements.txt
+py -m streamlit run app.py
+```
 
-Run `py reproduce.py` from this folder. Source: the existing six-fund monthly price snapshot, October 2021–September 2026, producing 59 monthly returns.
-
-| Metric | Existing six-fund exercise |
-|---|---:|
-| Estimated annual gross return | 6.08% |
-| Estimated annual volatility | 3.33% |
-| Reserve-eligible weight | 85.00% |
-| VOO / QQQ / SOXX / SCHD / BIL / BND weights | 0 / 5 / 5 / 5 / 85 / 0% |
-
-Settings: at least 6% estimated gross annual return, at least 5% BIL, nonnegative weights summing to 100%, 5-percentage-point grid, minimum estimated volatility. This does not establish the net-return target, full mandate compliance, future performance or point-in-time validity.
-
-## I — Partner's cold run
-
-**Unresolved — no Lab 20 partner observation has been provided.** The AI-assisted reproduction above is not a partner cold run. Earlier partner discussions are not reused as today's evidence.
-
-| Required observation | Partner's actual note |
+| Required observation | Report |
 |---|---|
-| Partner name | UNRESOLVED |
-| Repository link and commit tested | UNRESOLVED |
-| Exact command(s) entered | UNRESOLVED |
-| First failure and exact error, or an explicit clean run | UNRESOLVED |
-| Elapsed time | UNRESOLVED |
-| Result location and numbers reached | UNRESOLVED |
+| Repository | [edheeres05/Lab20](https://github.com/edheeres05/Lab20) |
+| First failure | No errors reported |
+| Elapsed time | Approximately 13.5 minutes to get the app running |
+| Result location | Streamlit app in the browser |
+| Result reached | Same six-fund baseline: 6.08% estimated annual gross return and 3.33% annual volatility |
 
-## V — Locked Changed-Input Record
+This note records the partner experience reported by Ethan. The AI-assisted verification is separate from Gage's cold run.
 
-**Unresolved — no new Lab 20 changed-input run has been performed.** Close AI and write this prediction yourself before running. The earlier Lab 15 sensitivities are not a new AI-off prediction.
+## V — Changed input: prediction and result
 
-### Before the run — write personally, then commit and push
+### Prediction preserved before the changed-input run
 
-I will lower SOXX’s expected annual return from 33.89% to 25%. I expect less allocation to SOXX, lower portfolio return, and lower volatility. My decision will remain Pilot because I expect a more conservative allocation with less exposure to the highly volatile semiconductor sector.
+[Prediction commit: a708628](https://github.com/edheeres05/Lab20/commit/a708628f404a89549e0dd33239ec06c834e876ec)
 
-### After the prediction commit — run and record
+The prediction was committed on November 17, 2026, at 5:11:49 p.m. Eastern. Its original text is preserved:
 
-- Actual after-output link: UNRESOLVED.
-- Before/after decision numbers: UNRESOLVED.
-- Does the decision change? UNRESOLVED.
-- Why the actual result matches or differs from the prediction, or why nothing changes: UNRESOLVED.
+> I will lower SOXX’s expected annual return from 33.89% to 25%. I expect less allocation to SOXX, lower portfolio return, and lower volatility. My decision will remain Pilot because I expect a more conservative allocation with less exposure to the highly volatile semiconductor sector.
 
-Preserve both outputs and the original prediction commit. Do not rewrite a prediction after seeing the result.
+The old displayed estimate was 33.89%; the exported unrounded assumption was 33.894245%. The new estimate is 25.000000% per year. Only SOXX's return estimate changed. The target stayed at 6%, the reserve minimum stayed at 5%, only BIL remained reserve-eligible, and all 59 monthly returns were used. Volatilities and correlations were unchanged.
 
-## Explain the code
+**AI-use disclosure:** I supplied the prediction ideas before running the change. AI clarified the prompt and polished the wording before the commit. This is not represented as a completely AI-off prediction.
 
-**Unresolved — complete the six-minute discussion with AI closed.**
+### Saved evidence
 
-- Code block explained: UNRESOLVED.
-- Partner's actual question: UNRESOLVED.
-- My answer from the code: UNRESOLVED.
-- Line I could not explain, if any: UNRESOLVED.
+- [Before output](before.md)
+- [After output](after.md)
+
+| Holding | Before | After | Change |
+|---|---:|---:|---:|
+| VOO | 0% | 5% | +5 percentage points |
+| QQQ | 5% | 5% | 0 |
+| SOXX | 5% | 5% | 0 |
+| SCHD | 5% | 5% | 0 |
+| BIL | 85% | 80% | −5 percentage points |
+| BND | 0% | 0% | 0 |
+
+| Decision number | Before | After |
+|---|---:|---:|
+| Estimated annual gross return | 6.08% | 6.10% |
+| Estimated annual volatility | 3.33% | 4.04% |
+| Reserve-eligible weight | 85.00% | 80.00% |
+| Meets the 6% gross-return screen | Yes | Yes |
+| Meets the 5% BIL reserve screen | Yes | Yes |
+
+The largest allocation change was 5 percentage points. Return increased by approximately 0.02 percentage points and volatility increased by approximately 0.71 percentage points, using the displayed rounded results.
+
+### Why the result differed from the prediction
+
+My prediction did not match the allocation or risk result. SOXX stayed at 5%, and the optimizer moved 5 percentage points from BIL to VOO. Lowering SOXX's return estimate did not lower its volatility assumption.
+
+With the original weights held fixed, the lower SOXX estimate would reduce portfolio expected return to approximately 5.63%, below the unchanged 6% target. The optimizer therefore had to select a different feasible mix. It added VOO and reduced BIL to regain the target, which increased estimated volatility. The after result's slightly higher return reflects the newly selected mix on the 5-point grid; it does not mean lowering an asset's assumed return improved the original portfolio.
+
+### Effect on the decision
+
+The recommendation remains **Pilot for educational testing only**. The rationale is limited testing and further validation, not the predicted reduction in risk: this run actually increased risk. Remaining feasible under the selected screens supports continuing the exercise, but does not establish that the process is ready for real-money adoption.
 
 ## E — Fix one thing
 
-**AI-assisted preparation completed:** packaged the existing application and inputs with a README, a result-reproduction command, and readable baseline output. This addresses the observed packaging/entry-point gap, but it is not claimed as the first failure encountered by a partner.
-
-- Partner's first failure: UNRESOLVED.
-- Fix made in response, or confirmed clean run with no fix needed: UNRESOLVED.
-- Fix commit URL: UNRESOLVED — nothing pushed.
-- Partner's rerun result: UNRESOLVED.
+Gage reported a clean cold run. **No fix was needed**, so there is no repair commit or repair rerun to report. The final README clarifies how to select the six-fund preset after a restart; this documentation clarification is not presented as a repair of a failure Gage encountered.
 
 ## Decision line
 
-**Draft for Ethan to review, based on the earlier Lab 15 pilot position:** Pilot the six-fund model for educational evaluation only; reject the process for investment use unless the final mandate is reconciled and the required cost, risk, timing and reproducibility checks are completed.
+**Pilot the six-fund process for educational testing only; reverse to reject if a changed input makes the selected return/reserve screens infeasible or the saved calculations cannot be reproduced.**
 
-The six-fund version is confirmed. This proposed readiness decision does not claim that the complete mandate has been finalized or an investment allocation approved. The response to the new changed input is still unresolved.
+## R — Project 2 readiness assessment
 
-## Reflect
+| Manifest part | Evidence and current status |
+|---|---|
+| Tool | Runnable Streamlit app with editable return assumptions and portfolio results. The current app enforces the limited exercise screens, not the complete Project 2 mandate. |
+| Repository | README supplies installation, app-start and single-command baseline reproduction instructions. Gage reported a clean cold run. |
+| Visible output | Before and after Markdown files and baseline output are readable on GitHub. |
+| Decision memo | The decision is recorded in this Lab 20 write-up. A separate final Project 2 decision memo is not included. |
+| Validation and AI use | Baseline reproduction, one changed-return-estimate test, prediction commit and AI disclosure are documented. Full Project 2 baseline verdicts, cost/window/constraint stress coverage and integrated point-in-time evidence are not established by this package. |
+| Videos and transcripts | Project 2 video and transcript links are not included in this Lab 20 package. |
 
-Complete from the actual partner discussion:
+The data are a saved adjusted-price snapshot, not a point-in-time archive. Return estimates are arithmetic historical means, not forecasts. Trading costs and taxes are excluded. The model's grid minimum is not an exact continuous optimum. The complete Project 2 mandate is not validated by the two exercise screens.
 
-1. What the cold run found that I could not see: UNRESOLVED.
-2. What I will not touch before the deadline: UNRESOLVED.
+This is the Lab 20 readiness record, not a claim that the entire Project 2 submission is complete. The assignment permits truthful unresolved readiness items.
 
-## Checkout
+## Checkout links
 
-After uploading to the **existing** repository, submit GitHub links for this Markdown file and the code/data files needed to run the app. The README and visible output should also be reachable there. The ZIP itself is a download bundle; it does not replace the requested GitHub file links.
+- [Repository and README](https://github.com/edheeres05/Lab20)
+- [Lab 20 Markdown](https://github.com/edheeres05/Lab20/blob/main/Lab20_EthanHeeres.md)
+- [Application](https://github.com/edheeres05/Lab20/blob/main/app.py)
+- [Calculation engine](https://github.com/edheeres05/Lab20/blob/main/portfolio.py)
+- [Before evidence](https://github.com/edheeres05/Lab20/blob/main/before.md)
+- [After evidence](https://github.com/edheeres05/Lab20/blob/main/after.md)
 
-Quiz completion, partner activities, commits, videos and Brightspace submission have not been claimed.
-
-Assignment: [Lab 20](https://github.com/CinderZhang/FIN43900-Fall2026/blob/main/lessons/week-13/lab-20-project2-readiness.md). The assignment permits truthful unresolved items; it does not grade or approve Project 2.
+Assignment: [Lab 20 — Project 2 Readiness](https://github.com/CinderZhang/FIN43900-Fall2026/blob/main/lessons/week-13/lab-20-project2-readiness.md).
