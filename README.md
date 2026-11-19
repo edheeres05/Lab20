@@ -1,5 +1,3 @@
-ChatGPT assisted with code development, packaging, verification and writing. Ethan supplied the prediction ideas, portfolio choice and partner report and is responsible for the analysis and decision.
-
 Education, not investment advice.
 
 # FIN 439 — Lab 20: Project 2 Readiness
